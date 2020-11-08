@@ -7,6 +7,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const server = express();
+const isDev = process.env.NODE_ENV !== 'production';
 
 server.use(
   cors({
@@ -33,8 +34,11 @@ server.get('*', (req, res) => {
 });
 
 server.listen(process.env.PORT || '8080', () => {
-  process.stdout.write(clc.erase.screen);
-  process.stdout.write(clc.move.top);
+  if (isDev) {
+    process.stdout.write(clc.erase.screen);
+    process.stdout.write(clc.move.top);
+  }
+
   console.log('Server Online');
   console.log(`Puerto ${process.env.PORT || '8080'}`);
 });
