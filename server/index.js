@@ -3,10 +3,13 @@ const path = require('path');
 const clc = require('cli-color');
 const morgan = require('morgan');
 const cors = require('cors');
+const { dbConnection } = require('./database/config');
 
 require('dotenv').config();
 
 const server = express();
+dbConnection();
+
 const isDev = process.env.NODE_ENV !== 'production';
 
 server.use(
@@ -17,18 +20,15 @@ server.use(
 );
 
 server.use(express.json());
-server.use(morgan('dev'));
+if (isDev) {
+  server.use(morgan('dev'));
+}
 
-// Priority serve any static files.
 server.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
-// Answer API requests.
-server.get('/api', (req, res) => {
-  res.set('Content-Type', 'application/json');
-  res.send('{"message":"Hello from the custom server!"}');
-});
+server.use('/api/auth', require('./routes/auth'));
+server.use('/api/app', require('./routes/app'));
 
-// All remaining requests return the React app, so it can handle routing.
 server.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
 });
