@@ -34,7 +34,7 @@ Hay endpoints que son privados, estos unicamente podran ser accedidos con un tok
 
 #### Auth
 
-##### `POST /api/auth/register' - Registro
+##### `POST /api/auth/register` - Registro
 
 Parametros dentro del body: 
 
