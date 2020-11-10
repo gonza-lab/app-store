@@ -1,8 +1,16 @@
 const { Router } = require('express');
-const { createApp } = require('../controllers/app');
+const {
+  createApp,
+  updateApp,
+  readApps,
+  deleteApp,
+} = require('../controllers/app');
 const {
   createAppValidators,
+  updateAppValidators,
+  deleteAppValidators,
 } = require('../validators/app-validators');
+const { isUserApp } = require('../validators/isAppUser-validator');
 const { jwtValidator } = require('../validators/jwt-validator');
 
 /*
@@ -11,8 +19,9 @@ const { jwtValidator } = require('../validators/jwt-validator');
 
 const route = Router();
 
-route.use(jwtValidator);
-
-route.post('/', createAppValidators, createApp);
+route.post('/', [jwtValidator, ...createAppValidators], createApp);
+route.get('/', readApps);
+route.put('/', [jwtValidator, ...updateAppValidators, isUserApp], updateApp);
+route.delete('/', [jwtValidator, ...deleteAppValidators, isUserApp], deleteApp);
 
 module.exports = route;

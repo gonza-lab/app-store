@@ -1,5 +1,5 @@
 const { check } = require('express-validator');
-const User = require('../models/User');
+const Application = require('../models/Application');
 const fieldValidator = require('./field-validator');
 
 const createAppValidators = [
@@ -14,16 +14,39 @@ const createAppValidators = [
   }),
   check('price', 'Debe enviar un precio valido').isNumeric(),
   check('logo', 'Debe enviar una url de su logo valida').isURL(),
-  check('user', 'Debe enviar un id de usuario valido')
-    .isLength({ min: 24, max: 24 })
-    .custom(async (user) => {
-      const userExists = await User.exists({ _id: user });
+  fieldValidator,
+];
 
-      if (!userExists) {
-        throw new Error('El usuario que envio no existe');
+const updateAppValidators = [
+  check('price', 'Debe enviar un precio valido').isNumeric(),
+  check('logo', 'Debe enviar una url de su logo valida').isURL(),
+  check('_id', 'Debe enviar un id de pantalla valido válido')
+    .isLength({ min: 24, max: 24 })
+    .custom(async (_id) => {
+      const existsApp = await Application.exists({ _id });
+
+      if (!existsApp) {
+        throw new Error('El id que envio no coincide con ninguna app');
       }
     }),
   fieldValidator,
 ];
 
-module.exports = { createAppValidators };
+const deleteAppValidators = [
+  check('_id', 'Debe enviar un id de una app válida')
+    .isLength({ min: 24, max: 24 })
+    .custom(async (_id) => {
+      const existsApp = await Application.exists({ _id });
+
+      if (!existsApp) {
+        throw new Error('El id que envio no coincide con ninguna app');
+      }
+    }),
+  fieldValidator,
+];
+
+module.exports = {
+  createAppValidators,
+  updateAppValidators,
+  deleteAppValidators,
+};

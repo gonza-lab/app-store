@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+require('./Application');
 
 const UserSchema = new Schema({
   name: {
@@ -19,6 +20,7 @@ const UserSchema = new Schema({
     type: Boolean,
     required: true,
   },
+  apps: [{ type: Schema.Types.ObjectId, ref: 'Application' }],
 });
 
 UserSchema.methods.encryptPassword = async function () {
