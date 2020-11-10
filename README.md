@@ -30,9 +30,11 @@ El backend esta compuesto por 4 variables locales:
 
 ### API Docs
 
+Hay endpoints que son privados, estos unicamente podran ser accedidos con un token, que se debera enviar como parametro ```x-token``` dentro del ```header```.
+
 #### Auth
 
-##### `POST /api/auth/register'
+##### `POST /api/auth/register' - Registro
 
 Parametros dentro del body: 
 
@@ -41,6 +43,48 @@ Parametros dentro del body:
 -  `password`: String 
 -  `isDev`: Booleano
 
-##### `POST /api/auth` - Registro
+##### `POST /api/auth/login` - Login
+
+Parametros dentro del body: 
+
+-  `email`: String 
+-  `password`: String 
+
+##### `GET /api/auth/renew` - Renew token - Privado
+
+Sin parametros
 
 ---
+
+### Application
+
+##### `POST /api/app` - Crear App - Privado
+
+Parametros dentro del body: 
+
+-  `name`: String 
+-  `category`: String
+-  `price`: Number 
+-  `logo`: String (url del logo)
+
+##### `PUT /api/app` - Actualizar App - Privado
+
+Parametros dentro del body: 
+-  `_id`: String (id de la app a actualizar)
+-  `price`: Number 
+-  `logo`: String (url del logo)
+
+##### `GET /api/app` - Obtener todas las apps
+
+Sin parametros
+
+##### `DELETE /api/app` - Eliminar app - Privado
+
+Parametros dentro del body: 
+
+-  `_id`: String (id de la app a eliminar)
+
+---
+
+
+
