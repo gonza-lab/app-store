@@ -25,20 +25,22 @@ El unico requerimiento es tener una base de datos de MongoDB. En mi caso utilice
 El backend esta compuesto por 4 variables locales:
 
 -  ORIGIN: Se almacenara el URL que puede hacer peticiones a la api.
--  DB_CNN: Se almacenara el URI de la base de datos de MongoDB.
+-  DB_CNN: Se almacenara el URI de la pase de datos de MongoDB.
 -  JWT_PRIVATE_KEY: Se almacenara la clave secreta que codificara y decodificara el token de la autenticacion.
 
 ### API Docs
 
 #### Auth
 
-##### `POST /api/auth` - Registro
+##### `POST /api/auth/register'
 
-Requerimientos del body: 
+Parametros dentro del body: 
 
 -  `name`: String 
 -  `email`: String 
 -  `password`: String 
 -  `isDev`: Booleano
+
+##### `POST /api/auth` - Registro
 
 ---
