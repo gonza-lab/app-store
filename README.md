@@ -86,5 +86,17 @@ Parametros dentro del body:
 
 ---
 
+##### `POST /api/buy` - Comprar una app - Privado
+
+-  `_id`: String (id de la app a comprar)
+
+##### `DELETE /api/buy` - Remover app - Privado
+
+Parametros dentro del body: 
+
+-  `_id`: String (id de la app a eliminar)
+
+---
+
 
 
