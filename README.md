@@ -13,7 +13,7 @@ Para instalar el backend, debe ejecutar el comando npm install en la raiz de la 
 
 ```bash
 npm install
-npm start
+npm run dev-server
 ```
 
 ### Requerimientos
