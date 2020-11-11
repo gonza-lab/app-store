@@ -44,7 +44,6 @@ const readApps = async (req = request, res = response) => {
       .populate('user', 'name -_id')
       .populate('category', 'name');
 
-    console.log(appsDB);
     res.json({
       ok: true,
       apps: appsDB,
