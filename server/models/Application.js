@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 require('./User');
+require('./Category');
 
 const AppSchema = new Schema({
   name: {
@@ -7,13 +8,20 @@ const AppSchema = new Schema({
     required: true,
   },
   category: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
     required: true,
   },
   price: {
     type: Number,
     required: true,
   },
+  priceHistory: [
+    {
+      modified: { type: Date, required: true },
+      price: { type: Number, required: true },
+    },
+  ],
   logo: {
     type: String,
     required: true,
@@ -22,11 +30,14 @@ const AppSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
+  date: {
+    type: Date,
+    required: true,
+  },
 });
 
 AppSchema.method('toJSON', function () {
-  const { __v, _id, ...object } = this.toObject();
-  object.id = _id;
+  const { __v, ...object } = this.toObject();
   return object;
 });
 

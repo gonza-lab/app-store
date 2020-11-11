@@ -1,5 +1,6 @@
 const { request, response } = require('express');
 const Application = require('../models/Application');
+const Category = require('../models/Category');
 const User = require('../models/User');
 
 const createApp = async (req = request, res = response) => {
@@ -7,8 +8,16 @@ const createApp = async (req = request, res = response) => {
     const userDB = await User.findById(req._id);
 
     if (userDB.isDev) {
-      const newApp = new Application({ ...req.body, user: req._id });
+      const newApp = new Application({
+        ...req.body,
+        user: req._id,
+        date: new Date(),
+      });
+      const categoryDB = await Category.findById(req.body.category);
+      categoryDB.apps.push(newApp._id);
+
       await newApp.save();
+      await categoryDB.save();
 
       res.status(201).json({
         ok: true,
@@ -31,7 +40,9 @@ const createApp = async (req = request, res = response) => {
 
 const readApps = async (req = request, res = response) => {
   try {
-    const appsDB = await Application.find().populate('user', '_id name');
+    const appsDB = await Application.find()
+      .populate('user', 'name -_id')
+      .populate('category', 'name');
 
     console.log(appsDB);
     res.json({
@@ -71,7 +82,13 @@ const updateApp = async (req = request, res = response) => {
 
 const deleteApp = async (req = request, res = response) => {
   try {
-    await Application.findByIdAndDelete(req.body._id);
+    const appDB = await Application.findById(req.body._id);
+    const categoryDB = await Category.findById(appDB.category);
+
+    categoryDB.apps.splice(categoryDB.apps.indexOf(appDB._id), 1);
+
+    await appDB.deleteOne();
+    await categoryDB.save();
 
     res.json({
       ok: true,
