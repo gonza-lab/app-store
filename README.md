@@ -16,7 +16,7 @@ npm install
 npm start
 ```
 
-### Requirements
+### Requerimientos
 
 El unico requerimiento es tener una base de datos de MongoDB. En mi caso utilice MongoDB Atlas.
 
@@ -28,9 +28,11 @@ El backend esta compuesto por 4 variables locales:
 -  DB_CNN: Se almacenara el URI de la pase de datos de MongoDB.
 -  JWT_PRIVATE_KEY: Se almacenara la clave secreta que codificara y decodificara el token de la autenticacion.
 
-### API Docs
+### API Docs / Endpoints
 
 Hay endpoints que son privados, estos unicamente podran ser accedidos con un token, que se debera enviar como parametro ```x-token``` dentro del ```header```.
+
+---
 
 #### Auth
 
@@ -85,6 +87,8 @@ Parametros dentro del body:
 -  `_id`: String (id de la app a eliminar)
 
 ---
+
+### Buy
 
 ##### `POST /api/buy` - Comprar una app - Privado
 
