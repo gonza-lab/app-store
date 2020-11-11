@@ -58,7 +58,7 @@ Sin parametros
 
 ---
 
-### Application
+#### Application
 
 ##### `POST /api/app` - Crear App - Privado
 
@@ -88,7 +88,7 @@ Parametros dentro del body:
 
 ---
 
-### Buy
+#### Buy
 
 ##### `POST /api/buy` - Comprar una app - Privado
 
