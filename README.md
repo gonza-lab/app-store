@@ -102,5 +102,17 @@ Parametros dentro del body:
 
 ---
 
+#### Category
+
+##### `POST /api/category` - Crear una categoria - Privado
+
+-  `name`: String 
+
+##### `GET /api/category` - Obtener categorias 
+
+Sin paramtros
+
+---
+
 
 
