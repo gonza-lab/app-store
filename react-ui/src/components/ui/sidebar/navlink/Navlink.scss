@@ -1,0 +1,73 @@
+@import '../../../../styles/settings';
+
+.ui-sidebar-navlink__btn {
+  color: $sidebar-font-color;
+  display: flex;
+  padding: 12px 16px;
+  align-items: center;
+  cursor: pointer;
+
+  > i {
+    color: $sidebar-font-color-sec;
+    transition: all 0.3s;
+  }
+
+  > i:first-child {
+    font-size: 0.9rem;
+    margin-right: 16px;
+  }
+
+  > p,
+  a {
+    text-decoration: none;
+    color: $sidebar-font-color;
+    margin: 0;
+    flex-grow: 5;
+    transition: all 0.2s;
+  }
+
+  &:hover > p,
+  &:hover > a {
+    color: $gen-text-color;
+  }
+
+  > .ui-sidebar-navlink__arrow {
+    font-size: 0.6rem;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.ui-sidebar-navlink__active {
+  font-weight: 600;
+  color: $gen-text-color !important;
+}
+
+.ui-sidebar-navlink__collapsed {
+  > .ui-sidebar-navlink__btn {
+    > .ui-sidebar-navlink__arrow {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.ui-sidebar-navlink__dropdown-content {
+  margin-left: 16px + 9px;
+  border-left: 1px solid $sidebar-border-color;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s;
+
+  > a {
+    padding: 8px 0;
+    padding-left: 16 + 9px;
+    text-decoration: none;
+    color: $sidebar-font-color;
+    &:hover {
+      color: $gen-text-color;
+    }
+  }
+}

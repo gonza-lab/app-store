@@ -1,0 +1,12 @@
+.ui-container {
+  display: flex;
+  height: 100%;
+}
+
+.ui-container__column {
+  flex-direction: column;
+}
+
+.ui-container__center {
+  justify-content: center;
+}

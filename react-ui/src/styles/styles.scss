@@ -1,0 +1,21 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100vh;
+  background-color: white;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  *:not(i) {
+    font-family: 'Roboto Slab', sans-serif;
+  }
+}

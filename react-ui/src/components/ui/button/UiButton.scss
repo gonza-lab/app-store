@@ -1,0 +1,26 @@
+.ui-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  height: 42px;
+}
+
+.ui-button__icon {
+  border-radius: 500px;
+  width: 42px;
+}
+
+.ui-button__transparent {
+  background-color: transparent;
+
+  &:hover {
+    background-color: rgba(33, 40, 50, 0.1);
+  }
+
+  &:focus {
+    background-color: rgba(33, 40, 50, 0.125);
+    box-shadow: 0 0 0 0.2rem rgba(33, 40, 50, 0.25);
+  }
+}

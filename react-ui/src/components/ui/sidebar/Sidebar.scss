@@ -1,0 +1,16 @@
+@import '../../../styles/settings';
+
+.ui-sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: $gen-bg;
+  width: 240px;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15);
+  transition: all 0.5s ease;
+  overflow-x: hidden;
+}
+
+.ui-sidebar__close {
+  width: 0px;
+}
+

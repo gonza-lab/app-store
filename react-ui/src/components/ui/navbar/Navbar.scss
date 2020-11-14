@@ -1,0 +1,29 @@
+@import '../../../styles/settings';
+
+.ui-navbar {
+  background-color: $gen-bg;
+  height: 58px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15);
+  z-index: 1;
+
+  > a {
+    text-decoration: none;
+    text-align: center;
+    padding: 5px 16px;
+    width: 15rem;
+    font-size: 1rem;
+    color: $nav-font-color;
+    font-weight: 700;
+  }
+
+  > .ui-button {
+    color: rgba(33, 40, 50, 0.5);
+  }
+
+  @media (max-width: 414px) {
+    justify-content: center;
+  }
+}
