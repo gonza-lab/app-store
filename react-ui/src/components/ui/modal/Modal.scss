@@ -1,0 +1,33 @@
+.ReactModalPortal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+
+  *:not(i) {
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+.ReactModal__Overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 1em;
+}
+
+.ReactModal__Body--open {
+  .ReactModalPortal {
+    display: block;
+  }
+}
+
+.ReactModal__Content {
+  outline: none;
+  max-width: 705px;
+  width: 100%;
+}

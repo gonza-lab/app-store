@@ -5,14 +5,21 @@
   cursor: pointer;
   transition: all 0.3s;
   height: 42px;
+  border-radius: 0.35rem;
+  padding: 18px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ui-button__icon {
   border-radius: 500px;
   width: 42px;
+  padding: 0;
 }
 
 .ui-button__transparent {
+  color: rgba(33, 40, 50, 0.5);
   background-color: transparent;
 
   &:hover {
@@ -22,5 +29,18 @@
   &:focus {
     background-color: rgba(33, 40, 50, 0.125);
     box-shadow: 0 0 0 0.2rem rgba(33, 40, 50, 0.25);
+  }
+}
+
+.ui-button__blue {
+  color: white;
+  background-color: rgb(0, 96, 240);
+
+  &:hover {
+    background-color: rgb(0, 82, 204);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 96, 240, 0.25);
   }
 }

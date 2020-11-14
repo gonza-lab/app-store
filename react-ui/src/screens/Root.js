@@ -1,8 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
 import { UiContainer } from '../components/ui/container/Container';
 import { UiNavbar } from '../components/ui/navbar/Navbar';
 import { UiSidebar } from '../components/ui/sidebar/Sidebar';
+import { ScreensAppRoot } from './app/Root';
+
+import './Root.scss';
 
 export const ScreensRoot = () => {
   return (
@@ -11,7 +19,9 @@ export const ScreensRoot = () => {
       <UiContainer>
         <UiSidebar />
         <Switch>
-          <Route exact path="/apps" component={() => <div>Aplicaciones</div>} />
+          <Route path="/apps/:category" component={ScreensAppRoot} />
+          <Route path="/apps" component={ScreensAppRoot} />
+          <Redirect to="/apps" />
         </Switch>
       </UiContainer>
     </Router>

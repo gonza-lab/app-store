@@ -1,18 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Footer.scss';
+import { useSelector } from 'react-redux';
+import { UiButton } from '../../button/UiButton';
 
-export const UiSidebarFooter = ({ name }) => {
+export const UiSidebarFooter = () => {
+  const { isLogged, name } = useSelector((state) => state.auth);
+
   return (
     <div
-      className={`ui-sidebar-footer ${name ? 'ui-sidebar-footer__show' : ''}`}
+      className={`ui-sidebar-footer ${
+        name ? 'ui-sidebar-footer__logged' : ''
+      }`}
     >
-      Logged in as:
-      <p>{name}</p>
+      {isLogged ? (
+        <>
+          Logged in as:
+          <p>{name}</p>
+        </>
+      ) : (
+        <UiButton theme="blue" className="ui-sidebar-footer__login">
+          LOGIN
+        </UiButton>
+      )}
     </div>
   );
-};
-
-UiSidebarFooter.propTypes = {
-  name: PropTypes.string,
 };

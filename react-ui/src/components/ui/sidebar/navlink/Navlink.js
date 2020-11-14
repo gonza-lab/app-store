@@ -18,7 +18,11 @@ export const UiSidebarNavlink = ({ options, children, dropdown }) => {
       >
         <i className={options.i}></i>
         {!dropdown ? (
-          <NavLink to={options.to} activeClassName="ui-sidebar-navlink__active">
+          <NavLink
+            exact
+            to={options.to}
+            activeClassName="ui-sidebar-navlink__active"
+          >
             {options.text}
           </NavLink>
         ) : (

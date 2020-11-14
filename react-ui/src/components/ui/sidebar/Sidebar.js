@@ -18,16 +18,21 @@ export const UiSidebar = () => {
       <UiContainer column>
         <UiSidebarHeading heading="APPS" />
         <UiSidebarNavlink
+          options={{ text: 'Aplicaciones', i: 'fas fa-heart', to: '/apps' }}
+        />
+        <UiSidebarNavlink
           dropdown
           options={{ text: 'Categorias', i: 'fas fa-tags' }}
         >
           <NavLink
+            exact
             activeClassName="ui-sidebar-navlink__active"
             to="/apps/juegos"
           >
             Juegos
           </NavLink>
           <NavLink
+            exact
             activeClassName="ui-sidebar-navlink__active"
             to="/apps/comunicacion"
           >
@@ -39,7 +44,7 @@ export const UiSidebar = () => {
           options={{ text: 'Usuario', i: 'far fa-user', to: '/me/apps' }}
         />
       </UiContainer>
-      <UiSidebarFooter name={name} />
+      <UiSidebarFooter />
     </aside>
   );
 };
