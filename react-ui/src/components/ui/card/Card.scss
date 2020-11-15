@@ -1,0 +1,50 @@
+@import '../../../styles/settings';
+
+.admin-card {
+  box-shadow: 0.15rem 0 1.75rem 0 rgba(31, 45, 65, 0.35);
+  border-radius: 5px;
+  background-color: white;
+
+  > div:first-child {
+    position: relative;
+    color: $gen-text-color;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.9em;
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    background-color: rgba(33, 40, 50, 0.03);
+    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+
+    > button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 1em;
+      background-color: $gen-text-color;
+      border-radius: 500px;
+      border: none;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: all 0.3s;
+      outline: none;
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background-color: darken($gen-text-color, 20%);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 0.2rem lighten($gen-text-color, 20%);
+      }
+    }
+  }
+  > div:last-child {
+    padding: 1em;
+  }
+}

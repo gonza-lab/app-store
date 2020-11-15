@@ -1,7 +1,17 @@
 import { types } from '../types/types';
 
 export const uiReducer = (
-  state = { isSidebarOpen: true, isModalOpen: false },
+  state = {
+    isSidebarOpen: true,
+    modalLogin: {
+      open: false,
+      show: false,
+    },
+    modalSigin: {
+      open: false,
+      show: false,
+    },
+  },
   action
 ) => {
   switch (action.type) {
@@ -11,10 +21,25 @@ export const uiReducer = (
         isSidebarOpen: !state.isSidebarOpen,
       };
 
-    case types.uiToggleModal:
+    case types.uiOpenModalLogin:
       return {
         ...state,
-        isModalOpen: !state.isModalOpen,
+        modalLogin: { open: true, show: true },
+        modalSigin: { open: false, show: false },
+      };
+
+    case types.uiOpenModalSigin:
+      return {
+        ...state,
+        modalLogin: { open: false, show: false },
+        modalSigin: { open: true, show: true },
+      };
+
+    case types.uiCloseAllModal:
+      return {
+        ...state,
+        modalSigin: { ...state.modalSigin, open: false },
+        modalLogin: { ...state.modalLogin, open: false },
       };
 
     default:

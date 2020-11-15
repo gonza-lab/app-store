@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { UiContainer } from '../container/Container';
 import { UiSidebarNavlink } from './navlink/Navlink';
@@ -9,7 +9,6 @@ import { UiSidebarFooter } from './footer/Footer';
 
 export const UiSidebar = () => {
   const { isSidebarOpen } = useSelector((state) => state.ui);
-  const [name] = useState('Gonzalo');
 
   return (
     <aside

@@ -3,8 +3,9 @@
   background-color: rgb(244, 244, 245);
   padding: 0px 12px;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
   font-size: 0.75rem;
   color: $sidebar-font-color-sec;
   height: 80px;

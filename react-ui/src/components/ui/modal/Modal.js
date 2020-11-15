@@ -1,16 +1,20 @@
 import React from 'react';
 import Modal from 'react-modal';
+import './Modal.scss';
+
+Modal.setAppElement('#root');
 
 export const UiModal = ({ children, ...rest }) => {
   return (
     <Modal
+      isOpen={rest.isOpen}
       overlayClassName={`animate__animated animate__${
-        isOpenModalAdmin ? 'fadeIn' : 'fadeOut'
+        rest.isOpen ? 'fadeIn' : 'fadeOut'
       }`}
       className={`animate__animated animate__${
-        isOpenModalAdmin ? 'slideInDown' : 'slideOutDown'
+        rest.isOpen ? 'slideInDown' : 'slideOutDown'
       }`}
-      closeTimeoutMS={1000}
+      closeTimeoutMS={750}
       {...rest}
     >
       {children}

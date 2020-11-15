@@ -44,3 +44,20 @@
     box-shadow: 0 0 0 0.2rem rgba(0, 96, 240, 0.25);
   }
 }
+
+.ui-button__green {
+  color: white;
+  background-color: #00ac69;
+
+  &:hover {
+    background-color: #008652;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(38, 184, 128, 0.5);
+  }
+
+  &:active {
+    background-color: #00794a;
+  }
+}
