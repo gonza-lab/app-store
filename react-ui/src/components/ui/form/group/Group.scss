@@ -1,0 +1,16 @@
+.ui-form-group {
+  display: flex;
+  flex-direction: row;
+
+  > * {
+    width: 100%;
+  }
+
+  > * + * {
+    margin-left: 10px;
+  }
+
+  & + * {
+    margin-top: 25px;
+  }
+}

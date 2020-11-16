@@ -9,6 +9,7 @@ export const UiButton = ({
   icon,
   theme,
   onClick,
+  type,
 }) => {
   const onFocus = (e) => {
     e.persist();
@@ -21,6 +22,7 @@ export const UiButton = ({
     <button
       onClick={onClick}
       onFocus={onFocus}
+      type={type ? type : 'button'}
       className={
         `ui-button ${icon ? 'ui-button__icon' : ''} ${
           theme ? `ui-button__${theme}` : ``
@@ -37,4 +39,5 @@ UiButton.propTypes = {
   theme: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   className: PropTypes.string,
+  type: PropTypes.string,
 };

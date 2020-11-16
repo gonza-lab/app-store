@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import './Footer.scss';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { UiButton } from '../../button/UiButton';
 import { openModalLogin, openModalSigin } from '../../../../actions/ui';
+
+import './Footer.scss';
 
 export const UiSidebarFooter = () => {
   const { isLogged, name } = useSelector((state) => state.auth);

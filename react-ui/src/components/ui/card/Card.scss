@@ -5,15 +5,24 @@
   border-radius: 5px;
   background-color: white;
 
+  > .ui-card__footer,
   > div:first-child {
     position: relative;
-    color: $gen-text-color;
+    padding: 0.9em;
+    background-color: rgba(33, 40, 50, 0.03);
+  }
+
+  > .ui-card__footer {
+    border-top: 1px solid rgba(33, 40, 50, 0.125);
+    display: flex;
+    justify-content: center;
+  }
+
+  > div:first-child {
     font-size: 1.2rem;
     font-weight: 500;
-    padding: 0.9em;
-    border-bottom: 1px solid rgba(255, 255, 255, 1);
-    background-color: rgba(33, 40, 50, 0.03);
     border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+    color: $gen-text-color;
 
     > button {
       position: absolute;
@@ -44,7 +53,7 @@
       }
     }
   }
-  > div:last-child {
-    padding: 1em;
+  > .ui-card__content {
+    padding: 1.35rem;
   }
 }

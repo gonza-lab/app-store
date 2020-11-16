@@ -1,0 +1,32 @@
+@import '../../../../styles/settings';
+
+.ui-form-input {
+  > * {
+    width: 100%;
+  }
+
+  > label {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: $form-label-font-color;
+    line-height: 1.5;
+  }
+
+  > input {
+    margin-top: 5px;
+    padding: 14px 18px;
+    border: 1px solid #c5ccd6;
+    border-radius: 0.35rem;
+    outline: none;
+    font-size: 0.875rem;
+    transition: all 0.3s;
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(0, 97, 242, 0.25);
+    }
+
+    &::placeholder {
+      color: lighten($color: $form-label-font-color, $amount: 20);
+    }
+  }
+}

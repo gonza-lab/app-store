@@ -1,0 +1,19 @@
+@import '../../../styles/settings';
+
+.auth-login-form__footer {
+  cursor: pointer;
+  color: $gen-text-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.auth-login-form {
+  button[type='submit'] {
+    position: relative;
+    left: 100%;
+    transform: translateX(-100%);
+  }
+}
