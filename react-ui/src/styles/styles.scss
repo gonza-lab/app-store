@@ -19,3 +19,9 @@ body,
     font-family: 'Roboto Slab', sans-serif;
   }
 }
+
+@media (max-width: 414px) {
+  :root {
+    font-size: 15px;
+  }
+}
