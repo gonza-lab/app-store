@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { startRegister } from '../../../actions/auth';
-import { closeAllModal, openModalLogin } from '../../../actions/ui';
+import { openModalLogin } from '../../../actions/ui';
 import { useForm } from '../../../hooks/useForm';
 import { UiButton } from '../../ui/button/UiButton';
 import { UiCard } from '../../ui/card/Card';
@@ -12,7 +12,7 @@ import { UiFormInput } from '../../ui/form/input/Input';
 import './Form.scss';
 
 export const AuthSiginForm = () => {
-  const [values, setFormValues, reset] = useForm({
+  const [values, setFormValues] = useForm({
     fName: '',
     lName: '',
     email: '',

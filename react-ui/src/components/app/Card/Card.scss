@@ -1,0 +1,55 @@
+.app-card {
+  width: 160px;
+  height: 245px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  background-color: white;
+}
+
+.app-card__img {
+  width: 100%;
+  height: 160px;
+  padding: 1em;
+
+  > img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.app-card__info {
+  padding: 1em;
+  > * {
+    margin: 0;
+    font-weight: 300;
+  }
+
+  > p:first-child {
+    height: 24px;
+    overflow: hidden;
+    font-size: 1em;
+    word-break: break-all;
+    cursor: pointer;
+
+    > a {
+      color: inherit;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  > p:last-child {
+    font-size: 13px;
+    user-select: none;
+  }
+}
+
+.app-card__price {
+  color: #33691e;
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  font-size: 13px;
+}

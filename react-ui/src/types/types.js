@@ -7,4 +7,6 @@ export const types = {
 
   authLogin: '[AUTH] Login',
   authLogout: '[AUTH] Logout',
+
+  appGet: '[APP] Get apps',
 };

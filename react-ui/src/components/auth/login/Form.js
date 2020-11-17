@@ -11,7 +11,7 @@ import { UiFormInput } from '../../ui/form/input/Input';
 import './Form.scss';
 
 export const AuthLoginForm = () => {
-  const [values, setValuesForm, reset] = useForm({
+  const [values, setValuesForm] = useForm({
     email: '',
     password: '',
   });

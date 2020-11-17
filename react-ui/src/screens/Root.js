@@ -22,6 +22,7 @@ import { closeAllModal } from '../actions/ui';
 
 import './Root.scss';
 import { renewToken } from '../helpers/renewToken';
+import { startGetApps } from '../actions/app';
 
 export const ScreensRoot = () => {
   const dispatch = useDispatch();
@@ -32,16 +33,16 @@ export const ScreensRoot = () => {
   };
 
   useEffect(() => {
-    const checkToken = async () => {
+    (async () => {
       const res = await renewToken();
 
       if (res.ok) {
         localStorage.setItem('x-token', res.token);
         dispatch(login({ _id: res._id, name: res.name }));
       }
-    };
+    })();
 
-    checkToken();
+    dispatch(startGetApps());
   }, []);
 
   return (

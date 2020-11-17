@@ -40,7 +40,7 @@ export const UiSidebarFooter = () => {
             theme="transparent"
             className="ui-sidebar-footer__btn-logout"
           >
-            <i class="fas fa-sign-out-alt"></i>
+            <i className="fas fa-sign-out-alt"></i>
           </UiButton>
         </>
       ) : (
