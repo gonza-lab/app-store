@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { openModalLogin } from '../../../actions/ui';
+import { startRegister } from '../../../actions/auth';
+import { closeAllModal, openModalLogin } from '../../../actions/ui';
 import { useForm } from '../../../hooks/useForm';
 import { UiButton } from '../../ui/button/UiButton';
 import { UiCard } from '../../ui/card/Card';
+import { UiFormCheck } from '../../ui/form/check/Check';
 import { UiFormGroup } from '../../ui/form/group/Group';
 import { UiFormInput } from '../../ui/form/input/Input';
 
@@ -16,6 +18,7 @@ export const AuthSiginForm = () => {
     email: '',
     password: '',
     cPassword: '',
+    isDev: false,
   });
 
   const [msgError, setMsgError] = useState('');
@@ -38,6 +41,9 @@ export const AuthSiginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      startRegister({ ...values, name: values.fName + ' ' + values.lName })
+    );
   };
 
   return (
@@ -102,6 +108,16 @@ export const AuthSiginForm = () => {
             msgError={msgError}
             type="password"
             required
+          />
+        </UiFormGroup>
+        <UiFormGroup>
+          <UiFormCheck
+            checked={values.isDev}
+            onChange={() =>
+              setFormValues({ target: { name: 'isDev', value: !values.isDev } })
+            }
+            labelText="Desarrollador"
+            name="isDev"
           />
         </UiFormGroup>
         <UiButton theme="blue" type="submit">

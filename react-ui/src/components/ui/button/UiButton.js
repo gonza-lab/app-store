@@ -10,6 +10,7 @@ export const UiButton = ({
   theme,
   onClick,
   type,
+  disabled,
 }) => {
   const onFocus = (e) => {
     e.persist();
@@ -28,6 +29,7 @@ export const UiButton = ({
           theme ? `ui-button__${theme}` : ``
         } ` + className
       }
+      disabled={disabled}
     >
       {Children}
     </button>
@@ -40,4 +42,5 @@ UiButton.propTypes = {
   onClick: PropTypes.func,
   className: PropTypes.string,
   type: PropTypes.string,
+  disabled: PropTypes.bool,
 };

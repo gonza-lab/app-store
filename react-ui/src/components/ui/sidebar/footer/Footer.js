@@ -5,6 +5,7 @@ import { UiButton } from '../../button/UiButton';
 import { openModalLogin, openModalSigin } from '../../../../actions/ui';
 
 import './Footer.scss';
+import { logout } from '../../../../actions/auth';
 
 export const UiSidebarFooter = () => {
   const { isLogged, name } = useSelector((state) => state.auth);
@@ -18,14 +19,29 @@ export const UiSidebarFooter = () => {
     dispatch(openModalSigin());
   };
 
+  const handleLogOut = () => {
+    localStorage.removeItem('x-token');
+    dispatch(logout());
+  };
+
   return (
     <div
       className={`ui-sidebar-footer ${name ? 'ui-sidebar-footer__logged' : ''}`}
     >
       {isLogged ? (
         <>
-          Logged in as:
-          <p>{name}</p>
+          <div>
+            Logged in as:
+            <p>{name}</p>
+          </div>
+          <UiButton
+            onClick={handleLogOut}
+            icon
+            theme="transparent"
+            className="ui-sidebar-footer__btn-logout"
+          >
+            <i class="fas fa-sign-out-alt"></i>
+          </UiButton>
         </>
       ) : (
         <>

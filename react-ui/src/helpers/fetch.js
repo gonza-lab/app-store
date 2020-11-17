@@ -1,7 +1,7 @@
 const baseUrl = process.env.REACT_APP_API_URL;
 
 export const fetchWithToken = (endpoint, method = 'GET', data) => {
-  const url = `${baseUrl}/${endpoint}`;
+  const url = `${baseUrl}${endpoint}`;
   const token = localStorage.getItem('x-token');
 
   if (method === 'GET') {
@@ -24,7 +24,7 @@ export const fetchWithToken = (endpoint, method = 'GET', data) => {
 };
 
 export const fetchWithOutToken = (endpoint, method = 'GET', data) => {
-  const url = `${baseUrl}/${endpoint}`;
+  const url = `${baseUrl}${endpoint}`;
 
   if (method === 'GET') {
     return fetch(url);

@@ -12,18 +12,31 @@
   transition: all 0.3s;
   overflow: hidden;
 
-  > * {
-    margin: 0;
-  }
+  > div:first-child {
+    > * {
+      margin: 0;
+    }
 
-  > p {
-    font-size: 1rem;
-    color: black;
-    font-weight: 500;
+    > p {
+      font-size: 1rem;
+      color: black;
+      font-weight: 500;
+    }
   }
 
   > .ui-sidebar-footer__login {
     letter-spacing: 1.5px;
     align-self: right;
   }
+}
+
+.ui-sidebar-footer__logged {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui-sidebar-footer__btn-logout{
+  font-size: 1.2rem;
 }

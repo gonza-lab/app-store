@@ -1,5 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { startLogin } from '../../../actions/auth';
 import { openModalSigin } from '../../../actions/ui';
 import { useForm } from '../../../hooks/useForm';
 import { UiButton } from '../../ui/button/UiButton';
@@ -15,6 +16,8 @@ export const AuthLoginForm = () => {
     password: '',
   });
 
+  const { isFormLoading } = useSelector((state) => state.ui);
+
   const dispatch = useDispatch();
 
   const handleOpenModalSigIn = (e) => {
@@ -24,6 +27,8 @@ export const AuthLoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    dispatch(startLogin(values));
   };
 
   return (
@@ -39,7 +44,12 @@ export const AuthLoginForm = () => {
       }
       title="Login"
     >
-      <form onSubmit={handleSubmit} className="auth-login-form">
+      <form
+        onSubmit={handleSubmit}
+        className={`auth-login-form${
+          isFormLoading ? ' auth-login-form__loading' : ''
+        }`}
+      >
         <UiFormGroup>
           <UiFormInput
             value={values.email}
@@ -62,7 +72,7 @@ export const AuthLoginForm = () => {
             required
           />
         </UiFormGroup>
-        <UiButton theme="blue" type="submit">
+        <UiButton theme="blue" type="submit" disabled={isFormLoading}>
           Login
         </UiButton>
       </form>

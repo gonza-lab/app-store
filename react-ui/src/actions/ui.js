@@ -15,3 +15,7 @@ export const openModalSigin = () => ({
 export const closeAllModal = () => ({
   type: types.uiCloseAllModal,
 });
+
+export const toggleFormLoading = () => ({
+  type: types.uiToggleFormLoading,
+});

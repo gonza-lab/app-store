@@ -1,0 +1,14 @@
+@import '../../../../styles/settings';
+
+.ui-form-check {
+  > input {
+    margin-right: 10px;
+  }
+
+  > label {
+    font-size: 1rem;
+    font-weight: 400;
+    color: $form-label-font-color;
+    line-height: 1.5;
+  }
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -17,9 +17,11 @@ import { AuthSiginForm } from '../components/auth/sigin/Form';
 
 import { ScreensAppRoot } from './app/Root';
 
+import { login } from '../actions/auth';
 import { closeAllModal } from '../actions/ui';
 
 import './Root.scss';
+import { renewToken } from '../helpers/renewToken';
 
 export const ScreensRoot = () => {
   const dispatch = useDispatch();
@@ -28,6 +30,19 @@ export const ScreensRoot = () => {
   const handleCloseModal = () => {
     dispatch(closeAllModal());
   };
+
+  useEffect(() => {
+    const checkToken = async () => {
+      const res = await renewToken();
+
+      if (res.ok) {
+        localStorage.setItem('x-token', res.token);
+        dispatch(login({ _id: res._id, name: res.name }));
+      }
+    };
+
+    checkToken();
+  }, []);
 
   return (
     <Router>

@@ -11,6 +11,7 @@ export const uiReducer = (
       open: false,
       show: false,
     },
+    isFormLoading: false,
   },
   action
 ) => {
@@ -40,6 +41,12 @@ export const uiReducer = (
         ...state,
         modalSigin: { ...state.modalSigin, open: false },
         modalLogin: { ...state.modalLogin, open: false },
+      };
+
+    case types.uiToggleFormLoading:
+      return {
+        ...state,
+        isFormLoading: !state.isFormLoading,
       };
 
     default:

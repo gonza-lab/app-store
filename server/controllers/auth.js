@@ -13,6 +13,7 @@ const createUser = async (req, res) => {
       ok: true,
       _id: user._id,
       token,
+      name: user.name,
     });
   } catch (error) {
     console.log(error);
@@ -58,8 +59,9 @@ const renewUser = async (req, res) => {
 
     res.json({
       ok: true,
-      _id: req.id,
+      _id: req._id,
       token,
+      name: req.name,
     });
   } catch (error) {
     console.log(error);
