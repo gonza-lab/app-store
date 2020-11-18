@@ -22,7 +22,7 @@ import { closeAllModal } from '../actions/ui';
 
 import './Root.scss';
 import { renewToken } from '../helpers/renewToken';
-import { startGetApps } from '../actions/app';
+import { startGetApps, startGetCategories } from '../actions/app';
 
 export const ScreensRoot = () => {
   const dispatch = useDispatch();
@@ -43,6 +43,7 @@ export const ScreensRoot = () => {
     })();
 
     dispatch(startGetApps());
+    dispatch(startGetCategories());
   }, []);
 
   return (

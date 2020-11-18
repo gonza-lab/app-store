@@ -9,4 +9,5 @@ export const types = {
   authLogout: '[AUTH] Logout',
 
   appGet: '[APP] Get apps',
+  appGetCategories: '[APP] Get categories',
 };

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { AppCard } from '../../components/app/Card/Card';
 import { AppList } from '../../components/app/List/List';
 
@@ -7,6 +8,15 @@ import './Root.scss';
 
 export const ScreensAppRoot = () => {
   const { category } = useParams();
+  const { apps } = useSelector((state) => state.app);
+
+  const appsFiltered = useMemo(() => {
+    if (category) {
+      return apps.filter((app) => app.category.name.toLowerCase() === category);
+    }
+
+    return apps;
+  }, [category, apps]);
 
   return (
     <div className="screens-app-root">
@@ -17,43 +27,13 @@ export const ScreensAppRoot = () => {
             : 'Todas las apps'
         }
       >
-        {[
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-        ].map(() => (
+        {appsFiltered.map((app) => (
           <AppCard
-            name="SoundCloud - Música, audio, mixes y podcast"
-            img="https://play-lh.googleusercontent.com/lvYCdrPNFU0Ar_lXln3JShoE-NaYF_V-DNlp4eLRZhUVkj00wAseSIm-60OoCKznpw=s180-rw"
-            developer="SoundCloud"
-            price="$16"
-            id="asdasd"
+            name={app.name}
+            img={app.logo}
+            developer={app.user.name}
+            id={app._id}
+            price={app.price ? app.price : undefined}
           />
         ))}
       </AppList>

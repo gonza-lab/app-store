@@ -9,6 +9,7 @@ import { UiSidebarFooter } from './footer/Footer';
 
 export const UiSidebar = () => {
   const { isSidebarOpen } = useSelector((state) => state.ui);
+  const { categories } = useSelector((state) => state.app);
 
   return (
     <aside
@@ -23,20 +24,15 @@ export const UiSidebar = () => {
           dropdown
           options={{ text: 'Categorias', i: 'fas fa-tags' }}
         >
-          <NavLink
-            exact
-            activeClassName="ui-sidebar-navlink__active"
-            to="/apps/juegos"
-          >
-            Juegos
-          </NavLink>
-          <NavLink
-            exact
-            activeClassName="ui-sidebar-navlink__active"
-            to="/apps/comunicacion"
-          >
-            Comunicacion
-          </NavLink>
+          {categories.map((category) => (
+            <NavLink
+              exact
+              activeClassName="ui-sidebar-navlink__active"
+              to={'/apps/' + category.name.toLowerCase()}
+            >
+              {category.name}
+            </NavLink>
+          ))}
         </UiSidebarNavlink>
         <UiSidebarHeading heading="USER" />
         <UiSidebarNavlink
