@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2';
-import { closeAllModal, toggleFormLoading } from './ui';
+import { closeAllModal, finishLoading, startLoading } from './ui';
 
 const { fetchWithOutToken } = require('../helpers/fetch');
 const { types } = require('../types/types');
@@ -16,9 +16,9 @@ const Toast = Swal.mixin({
   },
 });
 
-export const login = ({ _id, name }) => ({
+export const login = ({ _id, name, isDev, apps }) => ({
   type: types.authLogin,
-  payload: { _id, name },
+  payload: { _id, name, isDev, apps },
 });
 
 export const logout = () => ({
@@ -28,7 +28,7 @@ export const logout = () => ({
 export const startLogin = (user) => {
   return async (dispatch) => {
     try {
-      dispatch(toggleFormLoading());
+      dispatch(startLoading());
       const { password, email } = user;
       const res = await fetchWithOutToken('/auth/login', 'POST', {
         password,
@@ -49,7 +49,7 @@ export const startLogin = (user) => {
         });
       }
 
-      dispatch(toggleFormLoading());
+      dispatch(finishLoading());
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +59,7 @@ export const startLogin = (user) => {
 export const startRegister = (user) => {
   return async (dispatch) => {
     try {
-      dispatch(toggleFormLoading());
+      dispatch(startLoading());
       const { email, password, isDev, name } = user;
 
       const res = await fetchWithOutToken('/auth/register', 'POST', {
@@ -83,7 +83,7 @@ export const startRegister = (user) => {
         });
       }
 
-      dispatch(toggleFormLoading());
+      dispatch(finishLoading());
     } catch (error) {
       console.log(error);
     }

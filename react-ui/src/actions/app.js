@@ -1,4 +1,5 @@
 import { fetchWithOutToken } from '../helpers/fetch';
+import { finishLoading, startLoading } from './ui';
 
 const { types } = require('../types/types');
 
@@ -14,6 +15,7 @@ const getCategories = (categories) => ({
 
 export const startGetApps = () => {
   return async (dispatch) => {
+    dispatch(startLoading());
     try {
       const body = await fetchWithOutToken('/app', 'GET');
       const res = await body.json();
@@ -24,11 +26,13 @@ export const startGetApps = () => {
     } catch (error) {
       console.log(error);
     }
+    dispatch(finishLoading());
   };
 };
 
 export const startGetCategories = () => {
   return async (dispatch) => {
+    dispatch(startLoading());
     try {
       const body = await fetchWithOutToken('/category', 'GET');
       const res = await body.json();
@@ -39,5 +43,6 @@ export const startGetCategories = () => {
     } catch (error) {
       console.log(error);
     }
+    dispatch(finishLoading());
   };
 };

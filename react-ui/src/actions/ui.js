@@ -16,6 +16,10 @@ export const closeAllModal = () => ({
   type: types.uiCloseAllModal,
 });
 
-export const toggleFormLoading = () => ({
-  type: types.uiToggleFormLoading,
+export const startLoading = () => ({
+  type: types.uiStartLoading,
+});
+
+export const finishLoading = () => ({
+  type: types.uiFinishLoading,
 });

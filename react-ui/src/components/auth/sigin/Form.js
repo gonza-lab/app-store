@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startRegister } from '../../../actions/auth';
 import { openModalLogin } from '../../../actions/ui';
 import { useForm } from '../../../hooks/useForm';
@@ -20,6 +20,8 @@ export const AuthSiginForm = () => {
     cPassword: '',
     isDev: false,
   });
+
+  const { isLoading } = useSelector((state) => state.ui);
 
   const [msgError, setMsgError] = useState('');
 
@@ -59,7 +61,12 @@ export const AuthSiginForm = () => {
       }
       title="Sigin"
     >
-      <form onSubmit={handleSubmit} className="auth-sigin-form">
+      <form
+        onSubmit={handleSubmit}
+        className={`auth-sigin-form${
+          Boolean(isLoading) ? ' auth-sigin-form__loading' : ''
+        }`}
+      >
         <UiFormGroup>
           <UiFormInput
             onChange={setFormValues}
@@ -120,7 +127,7 @@ export const AuthSiginForm = () => {
             name="isDev"
           />
         </UiFormGroup>
-        <UiButton theme="blue" type="submit">
+        <UiButton theme="blue" type="submit" disabled={Boolean(isLoading)}>
           Sigin
         </UiButton>
       </form>

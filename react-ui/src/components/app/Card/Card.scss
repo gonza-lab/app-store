@@ -11,10 +11,35 @@
   width: 100%;
   height: 160px;
   padding: 1em;
+  position: relative;
 
   > img {
     width: 100%;
     height: 100%;
+  }
+
+  > div {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > i {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 3.5rem;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 
@@ -32,12 +57,10 @@
     word-break: break-all;
     cursor: pointer;
 
-    > a {
-      color: inherit;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
     }
   }
   > p:last-child {
@@ -47,9 +70,13 @@
 }
 
 .app-card__price {
-  color: #33691e;
+  background-color: #33691e;
+  color: white;
+  border-radius: 5px;
   position: absolute;
   right: 16px;
   bottom: 16px;
   font-size: 13px;
+  width: 50px;
+  text-align: center;
 }

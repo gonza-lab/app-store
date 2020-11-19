@@ -7,13 +7,15 @@ const createUser = async (req, res) => {
     await user.encryptPassword();
     await user.save();
 
-    const token = await createJWT(user._id, user.name);
+    const token = await createJWT(user._id, user.name, user.isDev);
 
     res.status(201).json({
       ok: true,
       _id: user._id,
+      isDev: user.isDev,
       token,
       name: user.name,
+      apps: user.apps,
     });
   } catch (error) {
     console.log(error);
@@ -35,12 +37,14 @@ const loginUser = async (req, res) => {
         msg: 'Contraseña o email incorrecto',
       });
     } else {
-      const token = await createJWT(user._id, user.name);
+      const token = await createJWT(user._id, user.name, user.isDev, user.apps);
 
       res.json({
         ok: true,
         _id: user._id,
         name: user.name,
+        isDev: user.isDev,
+        apps: user.apps,
         token,
       });
     }
@@ -55,13 +59,15 @@ const loginUser = async (req, res) => {
 
 const renewUser = async (req, res) => {
   try {
-    const token = await createJWT(req.id, req.name);
+    const token = await createJWT(req.id, req.name, req.isDev, req.apps);
 
     res.json({
       ok: true,
       _id: req._id,
+      isDev: req.isDev,
       token,
       name: req.name,
+      apps: req.apps,
     });
   } catch (error) {
     console.log(error);

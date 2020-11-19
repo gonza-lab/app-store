@@ -4,6 +4,8 @@ export const fetchWithToken = (endpoint, method = 'GET', data) => {
   const url = `${baseUrl}${endpoint}`;
   const token = localStorage.getItem('x-token');
 
+  console.log(url);
+
   if (method === 'GET') {
     return fetch(url, {
       method,

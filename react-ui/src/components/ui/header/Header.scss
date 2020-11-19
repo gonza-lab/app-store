@@ -1,0 +1,54 @@
+@import '../../../styles/settings';
+
+.ui-header {
+  width: 100%;
+  max-width: none;
+  height: 259px;
+  display: flex;
+  justify-content: center;
+  padding: 2em 1em 0 1em;
+  background: #0575e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #021b79,
+    #0575e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #021b79,
+    #0575e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  div {
+    max-width: 1392px;
+    width: 100%;
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 600;
+      color: white;
+      margin: 0;
+
+      i {
+        margin-right: 0.5em;
+        font-size: 2rem;
+        color: $sidebar-font-color-sec;
+      }
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: $sidebar-font-color-sec;
+      margin: 0;
+    }
+  }
+}
+
+.ui-header + * {
+  margin-top: -7em;
+}
+
+@media (max-width: 767px) {
+  .ui-header + * {
+    margin-top: -10em;
+  }
+}

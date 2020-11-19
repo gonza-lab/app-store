@@ -16,7 +16,7 @@ export const AuthLoginForm = () => {
     password: '',
   });
 
-  const { isFormLoading } = useSelector((state) => state.ui);
+  const { isLoading } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
 
@@ -47,7 +47,7 @@ export const AuthLoginForm = () => {
       <form
         onSubmit={handleSubmit}
         className={`auth-login-form${
-          isFormLoading ? ' auth-login-form__loading' : ''
+          Boolean(isLoading) ? ' auth-login-form__loading' : ''
         }`}
       >
         <UiFormGroup>
@@ -72,7 +72,7 @@ export const AuthLoginForm = () => {
             required
           />
         </UiFormGroup>
-        <UiButton theme="blue" type="submit" disabled={isFormLoading}>
+        <UiButton theme="blue" type="submit" disabled={Boolean(isLoading)}>
           Login
         </UiButton>
       </form>

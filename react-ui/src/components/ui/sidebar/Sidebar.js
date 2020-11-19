@@ -10,6 +10,7 @@ import { UiSidebarFooter } from './footer/Footer';
 export const UiSidebar = () => {
   const { isSidebarOpen } = useSelector((state) => state.ui);
   const { categories } = useSelector((state) => state.app);
+  const { isLogged } = useSelector((state) => state.auth);
 
   return (
     <aside
@@ -26,6 +27,7 @@ export const UiSidebar = () => {
         >
           {categories.map((category) => (
             <NavLink
+              key={category._id}
               exact
               activeClassName="ui-sidebar-navlink__active"
               to={'/apps/' + category.name.toLowerCase()}
@@ -34,10 +36,14 @@ export const UiSidebar = () => {
             </NavLink>
           ))}
         </UiSidebarNavlink>
-        <UiSidebarHeading heading="USER" />
-        <UiSidebarNavlink
-          options={{ text: 'Usuario', i: 'far fa-user', to: '/me/apps' }}
-        />
+        {isLogged && (
+          <>
+            <UiSidebarHeading heading="USER" />
+            <UiSidebarNavlink
+              options={{ text: 'Usuario', i: 'far fa-user', to: '/me/apps' }}
+            />
+          </>
+        )}
       </UiContainer>
       <UiSidebarFooter />
     </aside>

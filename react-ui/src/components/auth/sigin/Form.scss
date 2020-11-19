@@ -17,3 +17,9 @@
     transform: translateX(-100%);
   }
 }
+
+.auth-sigin-form__loading {
+  button[type='submit'] {
+    cursor: progress;
+  }
+}
