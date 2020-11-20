@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
 
 export const store = createStore(
   rootReducer,
-  process.env.NODE_ENV !== 'development'
+  process.env.NODE_ENV == 'production'
     ? applyMiddleware(thunk)
     : composeEnhancers(applyMiddleware(thunk))
 );
