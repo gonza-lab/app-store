@@ -4,6 +4,8 @@ import { appReducer } from '../reducers/appReducer';
 import { authReducer } from '../reducers/authReducer';
 import { uiReducer } from '../reducers/uiReducer';
 
+console.log(process.env.NODE_ENV);
+
 const composeEnhancers =
   (typeof window !== 'undefined' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
@@ -17,5 +19,7 @@ const rootReducer = combineReducers({
 
 export const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  process.env.NODE_ENV !== 'development'
+    ? applyMiddleware(thunk)
+    : composeEnhancers(applyMiddleware(thunk))
 );
