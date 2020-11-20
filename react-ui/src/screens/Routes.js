@@ -1,32 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  Redirect,
-  Route,
-  Switch,
-  useHistory,
-  useLocation,
-} from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { RoutesPrivateRoute } from '../components/routes/private/Route';
 import { ScreensAppRoot } from './app/Root';
 import { ScreensUserRoot } from './user/Root';
 
 export const Routes = () => {
   const { isLogged } = useSelector((state) => state.auth);
-  const location = useLocation();
-  const history = useHistory();
-
-  useEffect(() => {
-    localStorage.setItem('x-last-path', location.pathname);
-  }, [location]);
-
-  useEffect(() => {
-    const lastPath = localStorage.getItem('x-last-path');
-
-    if (lastPath !== '/me/apps') {
-      history.push(lastPath);
-    }
-  }, [isLogged]);
 
   return (
     <Switch>
