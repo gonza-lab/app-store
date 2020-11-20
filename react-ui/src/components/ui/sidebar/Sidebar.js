@@ -14,7 +14,7 @@ export const UiSidebar = () => {
 
   return (
     <aside
-      className={`ui-sidebar ${!isSidebarOpen ? 'ui-sidebar__close' : ''}`}
+      className={`ui-sidebar ${!(isSidebarOpen) ? 'ui-sidebar__close' : ''}`}
     >
       <UiContainer column>
         <UiSidebarHeading heading="APPS" />

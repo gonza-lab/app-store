@@ -13,3 +13,13 @@
 .ui-sidebar__close {
   width: 0px;
 }
+
+@media (max-width: 500px) {
+  .ui-sidebar {
+    width: 0px;
+  }
+
+  .ui-sidebar__close {
+    width: 240px;
+  }
+}
