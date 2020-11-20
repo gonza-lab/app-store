@@ -1,0 +1,13 @@
+.app-form {
+  button[type='submit'] {
+    position: relative;
+    left: 100%;
+    transform: translateX(-100%);
+  }
+}
+
+.app-form__loading {
+  button[type='submit'] {
+    cursor: progress;
+  }
+}

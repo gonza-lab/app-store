@@ -11,7 +11,15 @@ export const uiReducer = (
       open: false,
       show: false,
     },
-    isLoading: 0,
+    modalEditApp: {
+      open: false,
+      show: false,
+    },
+    modalNewApp: {
+      open: false,
+      show: false,
+    },
+    thingsIsLoading: [],
   },
   action
 ) => {
@@ -36,23 +44,40 @@ export const uiReducer = (
         modalSigin: { open: true, show: true },
       };
 
+    case types.uiOpenModalEditApp:
+      return {
+        ...state,
+        modalEditApp: { open: true, show: true },
+      };
+
+    case types.uiOpenModalNewApp:
+      return {
+        ...state,
+        modalNewApp: { open: true, show: true },
+      };
+
     case types.uiCloseAllModal:
       return {
         ...state,
         modalSigin: { ...state.modalSigin, open: false },
         modalLogin: { ...state.modalLogin, open: false },
+        modalEditApp: { ...state.modalEditApp, open: false },
+        modalNewApp: { ...state.modalNewApp, open: false },
       };
 
     case types.uiStartLoading:
       return {
         ...state,
-        isLoading: state.isLoading + 1,
+        thingsIsLoading: [...state.thingsIsLoading, action.payload],
       };
 
     case types.uiFinishLoading:
       return {
         ...state,
-        isLoading: state.isLoading - 1,
+        thingsIsLoading: state.thingsIsLoading.reduce(
+          (acum, curr) => (curr === action.payload ? acum : [...acum, curr]),
+          []
+        ),
       };
 
     default:

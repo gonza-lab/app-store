@@ -13,16 +13,19 @@ const createApp = async (req = request, res = response) => {
         user: req._id,
         date: new Date(),
       });
+
       const categoryDB = await Category.findById(req.body.category);
       categoryDB.apps.push(newApp._id);
 
       await newApp.save();
-      await categoryDB.save();
+      const appDB = await Application.findById(newApp._id)
+        .populate('user', 'name _id')
+        .populate('category', 'name');
 
       res.status(201).json({
         ok: true,
         msg: 'created',
-        ...newApp.toJSON(),
+        ...appDB.toJSON(),
       });
     } else {
       res.status(401).json({
@@ -41,7 +44,7 @@ const createApp = async (req = request, res = response) => {
 const readApps = async (req = request, res = response) => {
   try {
     const appsDB = await Application.find()
-      .populate('user', 'name -_id')
+      .populate('user', 'name _id')
       .populate('category', 'name');
 
     res.json({
@@ -100,4 +103,5 @@ const deleteApp = async (req = request, res = response) => {
     });
   }
 };
+
 module.exports = { createApp, updateApp, readApps, deleteApp };

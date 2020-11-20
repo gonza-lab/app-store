@@ -5,7 +5,6 @@
   display: flex;
   padding: 12px 16px;
   align-items: center;
-  cursor: pointer;
 
   > i {
     color: $sidebar-font-color-sec;
@@ -26,6 +25,7 @@
     margin: 0;
     flex-grow: 5;
     transition: all 0.2s;
+    cursor: pointer;
   }
 
   &:hover > p,

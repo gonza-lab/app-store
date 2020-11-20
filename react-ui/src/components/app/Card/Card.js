@@ -16,7 +16,7 @@ export const AppCard = ({ img, name, developer, price, onClick, i }) => {
         <p onClick={onClick}>{name}</p>
         <p>{developer}</p>
       </div>
-      {price && <div className="app-card__price">$US {price}</div>}
+      {Boolean(+price) && <div className="app-card__price">$US {price}</div>}
     </div>
   );
 };
@@ -25,6 +25,6 @@ AppCard.propTypes = {
   img: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   developer: PropTypes.string.isRequired,
-  price: PropTypes.string,
+  price: PropTypes.number,
   onClick: PropTypes.func,
 };

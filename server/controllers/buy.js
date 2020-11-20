@@ -3,8 +3,10 @@ const User = require('../models/User');
 
 const buyApp = async (req = request, res = response) => {
   try {
+    console.log(req._id);
     const { _id } = req.body;
     const userDB = await User.findById(req._id);
+
 
     if (!userDB.apps.includes(_id)) {
       userDB.apps.push(_id);
@@ -22,7 +24,7 @@ const buyApp = async (req = request, res = response) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      ok: true,
+      ok: false,
       msg: 'Ha ocurrido un error, hable con el administrador',
     });
   }
@@ -50,7 +52,7 @@ const removeApp = async (req = request, res = response) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      ok: true,
+      ok: false,
       msg: 'Ha ocurrido un error, hable con el administrador',
     });
   }

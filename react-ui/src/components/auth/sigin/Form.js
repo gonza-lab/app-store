@@ -21,7 +21,7 @@ export const AuthSiginForm = () => {
     isDev: false,
   });
 
-  const { isLoading } = useSelector((state) => state.ui);
+  const { thingsIsLoading } = useSelector((state) => state.ui);
 
   const [msgError, setMsgError] = useState('');
 
@@ -64,7 +64,9 @@ export const AuthSiginForm = () => {
       <form
         onSubmit={handleSubmit}
         className={`auth-sigin-form${
-          Boolean(isLoading) ? ' auth-sigin-form__loading' : ''
+          thingsIsLoading.indexOf('AUTH') > -1
+            ? ' auth-sigin-form__loading'
+            : ''
         }`}
       >
         <UiFormGroup>
@@ -82,7 +84,6 @@ export const AuthSiginForm = () => {
             labelText="Apellido"
             name="lName"
             placeholder="Ingresa tu apellido"
-            required
           />
         </UiFormGroup>
         <UiFormGroup>
@@ -127,7 +128,11 @@ export const AuthSiginForm = () => {
             name="isDev"
           />
         </UiFormGroup>
-        <UiButton theme="blue" type="submit" disabled={Boolean(isLoading)}>
+        <UiButton
+          theme="blue"
+          type="submit"
+          disabled={thingsIsLoading.indexOf('AUTH') > -1}
+        >
           Sigin
         </UiButton>
       </form>

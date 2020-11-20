@@ -42,7 +42,7 @@ TopBarProgress.config({
 
 export const ScreensRoot = () => {
   const dispatch = useDispatch();
-  const { modalSigin, modalLogin, isLoading } = useSelector(
+  const { modalSigin, modalLogin, thingsIsLoading } = useSelector(
     (state) => state.ui
   );
   const { isLogged } = useSelector((state) => state.auth);
@@ -54,7 +54,6 @@ export const ScreensRoot = () => {
   useEffect(() => {
     (async () => {
       const res = await renewToken();
-      console.log(res);
 
       if (res.ok) {
         localStorage.setItem('x-token', res.token);
@@ -75,7 +74,9 @@ export const ScreensRoot = () => {
 
   return (
     <Router>
-      {Boolean(isLoading) && <TopBarProgress />}
+      {(thingsIsLoading.indexOf('APPS') > -1 ||
+        thingsIsLoading.indexOf('CATEGORIES') > -1 ||
+        thingsIsLoading.indexOf('BUY') > -1) && <TopBarProgress />}
       <UiNavbar brand={{ name: 'AppStore7', to: '/' }} />
       <UiContainer>
         <UiSidebar />

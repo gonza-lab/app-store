@@ -41,7 +41,7 @@ UiFormInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   msgError: PropTypes.string,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string,

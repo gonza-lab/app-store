@@ -1,5 +1,6 @@
 const Usuario = require('../models/User');
 const createJWT = require('../helpers/createJWT');
+const User = require('../models/User');
 
 const createUser = async (req, res) => {
   try {
@@ -59,15 +60,16 @@ const loginUser = async (req, res) => {
 
 const renewUser = async (req, res) => {
   try {
-    const token = await createJWT(req.id, req.name, req.isDev, req.apps);
+    const userDB = await User.findById(req._id);
+    const token = await createJWT(req._id, req.name, req.isDev);
 
     res.json({
       ok: true,
       _id: req._id,
       isDev: req.isDev,
-      token,
       name: req.name,
-      apps: req.apps,
+      apps: userDB.apps,
+      token,
     });
   } catch (error) {
     console.log(error);

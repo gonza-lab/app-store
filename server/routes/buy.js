@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const { deleteApp } = require('../controllers/app');
 const { buyApp, removeApp } = require('../controllers/buy');
 const { buyAppValidators } = require('../validators/buy-validators');
 const { jwtValidator } = require('../validators/jwt-validator');

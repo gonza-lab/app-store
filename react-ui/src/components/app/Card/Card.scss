@@ -1,3 +1,5 @@
+@import '../../../styles/settings';
+
 .app-card {
   width: 160px;
   height: 245px;
@@ -79,4 +81,30 @@
   font-size: 13px;
   width: 50px;
   text-align: center;
+}
+
+.app-card__new {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+
+  > i {
+    color: $sidebar-font-color-sec;
+    font-size: 4rem;
+  }
+
+  > div {
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.3;
+    }
+  }
 }

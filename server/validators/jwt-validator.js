@@ -12,15 +12,13 @@ const jwtValidator = (req = request, res = response, next) => {
   }
 
   try {
-    const { id, name, isDev, apps } = jwt.verify(
-      token,
-      process.env.JWT_PRIVATE_KEY
-    );
-    
+    const { id, name, isDev } = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
+
     req._id = id;
     req.name = name;
     req.isDev = isDev;
-    req.apps = apps;
+
+    console.log(req._id);
   } catch (error) {
     return res.status(401).json({
       ok: false,
