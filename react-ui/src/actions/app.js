@@ -36,6 +36,11 @@ const addApp = (app) => ({
   payload: app,
 });
 
+const removeApp = (app) => ({
+  type: types.appRemove,
+  payload: app._id,
+});
+
 export const startGetApps = () => {
   return async (dispatch) => {
     dispatch(startLoading('APPS'));
@@ -120,6 +125,34 @@ export const startAddApp = (app) => {
       console.log(error);
     }
     dispatch(finishLoading('ADD'));
+    dispatch(closeAllModal());
+  };
+};
+
+export const startRemoveApp = (app) => {
+  return async (dispatch) => {
+    dispatch(startLoading('EDIT'));
+    try {
+      const body = await fetchWithToken('/app', 'DELETE', { _id: app._id });
+      const res = await body.json();
+
+      if (res.ok) {
+        dispatch(removeApp(app));
+        Toast.fire({
+          icon: 'success',
+          title: 'Ha eliminado la aplicacion con exito!',
+        });
+      } else {
+        Toast.fire({
+          icon: 'error',
+          title: 'Ha ocurrido un error, porfavor intentelo denuevo',
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    dispatch(finishLoading('EDIT'));
     dispatch(closeAllModal());
   };
 };

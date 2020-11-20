@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 
 import './Form.scss';
-import { startEditApp } from '../../../../actions/app';
+import { startEditApp, startRemoveApp } from '../../../../actions/app';
 
 export const AppFormEdit = ({ app }) => {
   const [values, setFormValues] = useForm({
@@ -37,8 +37,15 @@ export const AppFormEdit = ({ app }) => {
     dispatch(startEditApp({ ...values, _id: app._id }));
   };
 
+  const handleRemoveApp = () => {
+    dispatch(startRemoveApp(app));
+  };
+
   return (
-    <UiCard title="Edit">
+    <UiCard
+      title="Edit"
+      i={{ icon: 'far fa-trash-alt', onClick: handleRemoveApp }}
+    >
       <form
         className={`app-form${
           thingsIsLoading.indexOf('EDIT') > -1 ? ' app-form__loading' : ''

@@ -1,11 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import TopBarProgress from 'react-topbar-progress-indicator';
 
 import { UiContainer } from '../components/ui/container/Container';
@@ -16,16 +11,13 @@ import { UiModal } from '../components/ui/modal/Modal';
 import { AuthLoginForm } from '../components/auth/login/Form';
 import { AuthSiginForm } from '../components/auth/sigin/Form';
 
-import { ScreensAppRoot } from './app/Root';
-
 import { login } from '../actions/auth';
 import { closeAllModal } from '../actions/ui';
 
 import './Root.scss';
 import { renewToken } from '../helpers/renewToken';
 import { startGetApps, startGetCategories } from '../actions/app';
-import { ScreensUserRoot } from './user/Root';
-import { RoutesPrivateRoute } from '../components/routes/private/Route';
+import { Routes } from './Routes';
 
 TopBarProgress.config({
   autoRun: false,
@@ -45,7 +37,6 @@ export const ScreensRoot = () => {
   const { modalSigin, modalLogin, thingsIsLoading } = useSelector(
     (state) => state.ui
   );
-  const { isLogged } = useSelector((state) => state.auth);
 
   const handleCloseModal = () => {
     dispatch(closeAllModal());
@@ -80,17 +71,7 @@ export const ScreensRoot = () => {
       <UiNavbar brand={{ name: 'AppStore7', to: '/' }} />
       <UiContainer>
         <UiSidebar />
-        <Switch>
-          <RoutesPrivateRoute
-            condition={isLogged}
-            exact
-            path="/me/apps"
-            component={ScreensUserRoot}
-          />
-          <Route path="/apps/:category" component={ScreensAppRoot} />
-          <Route path="/apps" component={ScreensAppRoot} />
-          <Redirect to="/apps" />
-        </Switch>
+        <Routes />
       </UiContainer>
       <UiModal
         isOpen={modalLogin.open || modalSigin.open}
